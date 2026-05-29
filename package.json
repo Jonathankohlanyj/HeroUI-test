@@ -9,13 +9,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@heroui/react": "latest",
-    "@heroui/styles": "latest",
     "@vitejs/plugin-react": "latest",
     "vite": "latest",
     "react": "latest",
     "react-dom": "latest",
+    "@heroui/react": "latest",
+    "@heroui/styles": "latest",
     "tailwindcss": "latest",
     "framer-motion": "latest"
-  }
+  },
+  "devDependencies": {}
 }
