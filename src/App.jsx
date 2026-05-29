@@ -1,40 +1,27 @@
-import {
-  Avatar,
-  Badge,
-  Button,
-  Card,
-  CardBody,
-  CardHeader,
-  Chip,
-  Divider,
-  Input,
-  Progress,
-  Slider,
-  Spinner,
-  Switch,
-  Textarea
-} from "@heroui/react";
-
 export default function App() {
   return (
-    <main className="min-h-screen bg-background text-foreground p-5">
-      <section className="mx-auto max-w-5xl space-y-6">
-        <div className="space-y-3">
-          <Chip color="primary" variant="flat">HeroUI v3</Chip>
-          <h1 className="text-4xl font-bold">HeroUI Playground</h1>
-          <p className="text-default-500">Real HeroUI components, mobile friendly.</p>
-        </div>
-
-        <Card>
-          <CardHeader>
-            <h2 className="text-xl font-semibold">Buttons</h2>
-          </CardHeader>
-          <Divider />
-          <CardBody className="flex flex-wrap gap-3">
-            <Button color="primary">Primary</Button>
-            <Button color="secondary">Secondary</Button>
-            <Button color="success">Success</Button>
-            <Button color="warning">Warning</Button>
+    <main style={{
+      minHeight: "100vh",
+      background: "#09090b",
+      color: "white",
+      padding: "32px",
+      fontFamily: "system-ui"
+    }}>
+      <h1>BUILD GREEN TEST</h1>
+      <p>If you see this, deployment works.</p>
+      <button style={{
+        background: "#006fee",
+        color: "white",
+        border: "0",
+        padding: "14px 20px",
+        borderRadius: "14px",
+        fontWeight: "700"
+      }}>
+        Test Button
+      </button>
+    </main>
+  );
+}            <Button color="warning">Warning</Button>
             <Button color="danger">Danger</Button>
             <Button variant="bordered">Bordered</Button>
             <Button variant="flat" color="primary">Flat</Button>
