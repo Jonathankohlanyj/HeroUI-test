@@ -12,112 +12,87 @@
       margin: 0;
       background: #09090b;
       min-height: 100vh;
-      font-family: system-ui;
+      font-family: system-ui, sans-serif;
     }
   </style>
 </head>
 <body>
-<div id="root"></div>
+  <div id="root"></div>
 
-<script type="module">
-import React from "https://esm.sh/react@19";
-import { createRoot } from "https://esm.sh/react-dom@19/client";
+  <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@19.2.6",
+        "react-dom/client": "https://esm.sh/react-dom@19.2.6/client",
+        "@heroui/react": "https://esm.sh/@heroui/react@3.1.0"
+      }
+    }
+  </script>
 
-import {
-  HeroUIProvider,
-  Button,
-  Card,
-  CardBody,
-  Input,
-  Tabs,
-  Tab,
-  Switch,
-  Slider,
-  Chip
-} from "https://esm.sh/@heroui/react";
-
-const e = React.createElement;
-
-function App() {
-  return e(
-    "main",
-    { className: "min-h-screen bg-background text-foreground p-6" },
-
-    e("h1", {
-      className: "text-4xl font-bold mb-6"
-    }, "HeroUI Playground"),
-
-    e(
+  <script type="module">
+    import React from "react";
+    import { createRoot } from "react-dom/client";
+    import {
+      Button,
+      Card,
+      Input,
       Tabs,
-      { "aria-label": "tabs" },
+      Switch,
+      Slider,
+      Chip
+    } from "@heroui/react";
 
-      e(
-        Tab,
-        { key: "buttons", title: "Buttons" },
-        e(
-          Card,
-          null,
-          e(
-            CardBody,
-            { className: "flex gap-3 p-6 flex-wrap" },
-            e(Button, { color: "primary" }, "Primary"),
-            e(Button, { color: "secondary" }, "Secondary"),
-            e(Button, { color: "success" }, "Success"),
-            e(Button, { color: "danger" }, "Danger")
+    const e = React.createElement;
+
+    function App() {
+      return e("main", { className: "min-h-screen bg-background text-foreground p-6" },
+        e("h1", { className: "text-4xl font-bold mb-2" }, "HeroUI Playground"),
+        e("p", { className: "text-muted mb-6" }, "Real HeroUI v3, no JSX, one file."),
+
+        e(Tabs, { className: "w-full max-w-xl", defaultSelectedKey: "buttons" },
+          e(Tabs.List, { "aria-label": "Playground Tabs" },
+            e(Tabs.Tab, { id: "buttons" }, "Buttons"),
+            e(Tabs.Tab, { id: "forms" }, "Forms"),
+            e(Tabs.Tab, { id: "misc" }, "Misc")
+          ),
+
+          e(Tabs.Panel, { id: "buttons" },
+            e(Card, { className: "p-5 mt-4" },
+              e("div", { className: "flex flex-wrap gap-3" },
+                e(Button, { color: "primary" }, "Primary"),
+                e(Button, { color: "secondary" }, "Secondary"),
+                e(Button, { color: "success" }, "Success"),
+                e(Button, { color: "danger" }, "Danger"),
+                e(Button, { variant: "bordered" }, "Bordered")
+              )
+            )
+          ),
+
+          e(Tabs.Panel, { id: "forms" },
+            e(Card, { className: "p-5 mt-4" },
+              e("div", { className: "flex flex-col gap-4" },
+                e(Input, { label: "Username", placeholder: "Type here" }),
+                e(Input, { label: "Email", placeholder: "you@example.com", type: "email" }),
+                e(Switch, { defaultSelected: true }, "Dark mode"),
+                e(Slider, { label: "Power level", defaultValue: 65 })
+              )
+            )
+          ),
+
+          e(Tabs.Panel, { id: "misc" },
+            e(Card, { className: "p-5 mt-4" },
+              e("div", { className: "flex flex-wrap gap-3" },
+                e(Chip, { color: "primary" }, "HeroUI"),
+                e(Chip, { color: "success" }, "React"),
+                e(Chip, { color: "warning" }, "GitHub Pages")
+              )
+            )
           )
         )
-      ),
+      );
+    }
 
-      e(
-        Tab,
-        { key: "forms", title: "Forms" },
-        e(
-          Card,
-          null,
-          e(
-            CardBody,
-            { className: "p-6 gap-4 flex flex-col" },
-            e(Input, {
-              label: "Username",
-              placeholder: "type here"
-            }),
-            e(Switch, {
-              defaultSelected: true
-            }),
-            e(Slider, {
-              label: "Power",
-              defaultValue: 50
-            })
-          )
-        )
-      ),
-
-      e(
-        Tab,
-        { key: "misc", title: "Misc" },
-        e(
-          Card,
-          null,
-          e(
-            CardBody,
-            { className: "p-6 flex gap-3" },
-            e(Chip, { color: "warning" }, "HeroUI"),
-            e(Chip, { color: "success" }, "Works")
-          )
-        )
-      )
-    )
-  );
-}
-
-createRoot(document.getElementById("root")).render(
-  e(
-    HeroUIProvider,
-    null,
-    e(App)
-  )
-);
-</script>
-
+    createRoot(document.getElementById("root")).render(e(App));
+  </script>
 </body>
 </html>
