@@ -1,7 +1,7 @@
 {
   "name": "heroui-playground",
-  "private": true,
   "version": "1.0.0",
+  "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,14 +9,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@heroui/react": "latest",
+    "@heroui/styles": "latest",
     "@vitejs/plugin-react": "latest",
     "vite": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "@heroui/react": "latest",
-    "@heroui/styles": "latest",
-    "framer-motion": "latest",
-    "tailwindcss": "latest"
-  },
-  "devDependencies": {}
+    "tailwindcss": "latest",
+    "framer-motion": "latest"
+  }
 }
