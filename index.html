@@ -1,39 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>HeroUI Playground</title>
-  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-zinc-950">
-  <div id="root"></div>
 
-  <script type="text/babel">
+  <script type="module">
+    import React from "https://esm.sh/react";
+    import ReactDOM from "https://esm.sh/react-dom/client";
+    import {
+      HeroUIProvider,
+      Button,
+      Card,
+      Input
+    } from "https://esm.sh/@heroui/react";
+
     function App() {
-      return (
-        <div className="min-h-screen text-white p-6">
-          <h1 className="text-3xl font-bold mb-6">
-            HeroUI Playground
-          </h1>
-
-          <div className="bg-zinc-900 rounded-xl p-6 space-y-4">
-            <button className="bg-blue-500 px-4 py-2 rounded">
-              Primary
-            </button>
-
-            <input
-              className="w-full p-3 rounded bg-zinc-800"
-              placeholder="Type here"
-            />
-          </div>
-        </div>
+      return React.createElement(
+        HeroUIProvider,
+        null,
+        React.createElement("div", {
+          style: {
+            padding: "30px",
+            background: "#09090b",
+            minHeight: "100vh",
+            color: "white"
+          }
+        },
+          React.createElement("h1", null, "HeroUI Playground"),
+          React.createElement(Card, {style:{padding:"20px"}},
+            React.createElement(Input, {
+              label: "Test input"
+            }),
+            React.createElement(Button, {
+              color: "primary"
+            }, "Click")
+          )
+        )
       );
     }
 
-    ReactDOM.render(<App />, document.getElementById("root"));
+    ReactDOM.createRoot(
+      document.getElementById("root")
+    ).render(React.createElement(App));
   </script>
+</head>
+<body>
+  <div id="root"></div>
 </body>
 </html>
