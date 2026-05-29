@@ -1,98 +1,125 @@
 <!DOCTYPE html>
-<html lang="en" class="dark" data-theme="dark">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HeroUI Playground</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HeroUI Playground</title>
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@heroui/styles/dist/heroui.min.css">
+<style>
+body{
+margin:0;
+padding:24px;
+background:#09090b;
+color:white;
+font-family:Inter,system-ui;
+}
 
-  <style>
-    body {
-      margin: 0;
-      background: #09090b;
-      min-height: 100vh;
-      font-family: system-ui, sans-serif;
-    }
-  </style>
+.container{
+max-width:1000px;
+margin:auto;
+}
+
+h1{
+font-size:42px;
+margin-bottom:24px;
+}
+
+.tabs{
+display:flex;
+gap:12px;
+margin-bottom:24px;
+flex-wrap:wrap;
+}
+
+.tab{
+background:#18181b;
+border:1px solid #27272a;
+color:white;
+padding:14px 20px;
+border-radius:18px;
+cursor:pointer;
+font-weight:600;
+}
+
+.active{
+border-color:#3b82f6;
+box-shadow:0 0 0 2px #3b82f633;
+}
+
+.card{
+background:#18181b;
+border:1px solid #27272a;
+border-radius:24px;
+padding:24px;
+}
+
+.hidden{
+display:none;
+}
+
+button{
+border:none;
+padding:14px 20px;
+border-radius:16px;
+font-weight:600;
+cursor:pointer;
+margin:6px;
+}
+
+.primary{background:#3b82f6;color:white;}
+.secondary{background:#27272a;color:white;}
+.success{background:#22c55e;color:white;}
+.danger{background:#ef4444;color:white;}
+
+input{
+width:100%;
+padding:16px;
+margin:10px 0;
+border:none;
+border-radius:16px;
+background:#27272a;
+color:white;
+box-sizing:border-box;
+}
+</style>
 </head>
 <body>
-  <div id="root"></div>
 
-  <script type="importmap">
-    {
-      "imports": {
-        "react": "https://esm.sh/react@19.2.6",
-        "react-dom/client": "https://esm.sh/react-dom@19.2.6/client",
-        "@heroui/react": "https://esm.sh/@heroui/react@3.1.0"
-      }
-    }
-  </script>
+<div class="container">
+<h1>HeroUI Playground</h1>
 
-  <script type="module">
-    import React from "react";
-    import { createRoot } from "react-dom/client";
-    import {
-      Button,
-      Card,
-      Input,
-      Tabs,
-      Switch,
-      Slider,
-      Chip
-    } from "@heroui/react";
+<div class="tabs">
+<div class="tab active" onclick="show('buttons',this)">Buttons</div>
+<div class="tab" onclick="show('forms',this)">Forms</div>
+<div class="tab" onclick="show('misc',this)">Misc</div>
+</div>
 
-    const e = React.createElement;
+<div id="buttons" class="card">
+<button class="primary">Primary</button>
+<button class="secondary">Secondary</button>
+<button class="success">Success</button>
+<button class="danger">Danger</button>
+</div>
 
-    function App() {
-      return e("main", { className: "min-h-screen bg-background text-foreground p-6" },
-        e("h1", { className: "text-4xl font-bold mb-2" }, "HeroUI Playground"),
-        e("p", { className: "text-muted mb-6" }, "Real HeroUI v3, no JSX, one file."),
+<div id="forms" class="card hidden">
+<input placeholder="Username">
+<input placeholder="Email">
+</div>
 
-        e(Tabs, { className: "w-full max-w-xl", defaultSelectedKey: "buttons" },
-          e(Tabs.List, { "aria-label": "Playground Tabs" },
-            e(Tabs.Tab, { id: "buttons" }, "Buttons"),
-            e(Tabs.Tab, { id: "forms" }, "Forms"),
-            e(Tabs.Tab, { id: "misc" }, "Misc")
-          ),
+<div id="misc" class="card hidden">
+Real mobile GitHub compatible playground.
+</div>
+</div>
 
-          e(Tabs.Panel, { id: "buttons" },
-            e(Card, { className: "p-5 mt-4" },
-              e("div", { className: "flex flex-wrap gap-3" },
-                e(Button, { color: "primary" }, "Primary"),
-                e(Button, { color: "secondary" }, "Secondary"),
-                e(Button, { color: "success" }, "Success"),
-                e(Button, { color: "danger" }, "Danger"),
-                e(Button, { variant: "bordered" }, "Bordered")
-              )
-            )
-          ),
+<script>
+function show(id,el){
+document.querySelectorAll(".card").forEach(c=>c.classList.add("hidden"));
+document.getElementById(id).classList.remove("hidden");
 
-          e(Tabs.Panel, { id: "forms" },
-            e(Card, { className: "p-5 mt-4" },
-              e("div", { className: "flex flex-col gap-4" },
-                e(Input, { label: "Username", placeholder: "Type here" }),
-                e(Input, { label: "Email", placeholder: "you@example.com", type: "email" }),
-                e(Switch, { defaultSelected: true }, "Dark mode"),
-                e(Slider, { label: "Power level", defaultValue: 65 })
-              )
-            )
-          ),
+document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+el.classList.add("active");
+}
+</script>
 
-          e(Tabs.Panel, { id: "misc" },
-            e(Card, { className: "p-5 mt-4" },
-              e("div", { className: "flex flex-wrap gap-3" },
-                e(Chip, { color: "primary" }, "HeroUI"),
-                e(Chip, { color: "success" }, "React"),
-                e(Chip, { color: "warning" }, "GitHub Pages")
-              )
-            )
-          )
-        )
-      );
-    }
-
-    createRoot(document.getElementById("root")).render(e(App));
-  </script>
 </body>
 </html>
