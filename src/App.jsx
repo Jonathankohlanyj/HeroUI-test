@@ -13,7 +13,7 @@ export default function App() {
     >
       <h1>HeroUI Button Test</h1>
       <Button color="primary" radius="lg">
-        HeroUI Button
+        HeroUI poop
       </Button>
     </main>
   );
