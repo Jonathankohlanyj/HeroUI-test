@@ -1,33 +1,16 @@
-import {
-  Button,
-  Card,
-  CardBody,
-  Chip,
-  Input
-} from "@heroui/react";
+import { Button } from "@heroui/react";
 
 export default function App() {
   return (
-    <main className="min-h-screen bg-background text-foreground p-5">
-      <section className="mx-auto max-w-4xl space-y-6">
-        <Chip color="primary" variant="flat">HeroUI v3</Chip>
-
-        <h1 className="text-4xl font-bold">HeroUI Playground</h1>
-
-        <Card>
-          <CardBody className="flex flex-wrap gap-3">
-            <Button color="primary">Primary</Button>
-            <Button color="secondary">Secondary</Button>
-            <Button color="success">Success</Button>
-          </CardBody>
-        </Card>
-
-        <Card>
-          <CardBody className="grid gap-4">
-            <Input label="Username" placeholder="Type here" />
-          </CardBody>
-        </Card>
-      </section>
+    <main style={{
+      minHeight: "100vh",
+      background: "#09090b",
+      color: "white",
+      padding: "32px",
+      fontFamily: "system-ui"
+    }}>
+      <h1>HeroUI Test</h1>
+      <Button color="primary">HeroUI Button</Button>
     </main>
   );
 }
