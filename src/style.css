@@ -1,5 +1,8 @@
 @import "tailwindcss";
-@import "@heroui/styles";
+
+@source "../node_modules/@heroui/styles";
+@source "../node_modules/@heroui/theme";
+@source "../node_modules/@heroui/react";
 
 html,
 body,
