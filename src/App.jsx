@@ -2,28 +2,20 @@ import { Button } from "@heroui/react";
 
 export default function App() {
   return (
-    <main>
-      <section className="playground">
-        <h1 className="title">HeroUI Playground</h1>
+    <main className="min-h-screen bg-red-500 p-8 text-white">
+      <h1 className="text-4xl font-bold mb-6">
+        Tailwind Test
+      </h1>
 
-        <p className="desc">
-          Stable base. No Tailwindpoop layout dependency.
-        </p>
+      <div className="flex gap-4">
+        <button className="rounded-2xl bg-green-500 px-5 py-3 text-white">
+          Tailwind Button
+        </button>
 
-        <section className="panel">
-          <h2>Buttons</h2>
-
-          <div className="button-row">
-            <Button color="primary">Primary</Button>
-            <Button color="secondary">Secondary</Button>
-            <Button color="success">Success</Button>
-            <Button color="warning">Warning</Button>
-            <Button color="danger">Danger</Button>
-            <Button variant="bordered">Bordered</Button>
-            <Button variant="flat" color="primary">Flat</Button>
-          </div>
-        </section>
-      </section>
+        <Button color="primary">
+          HeroUI Button
+        </Button>
+      </div>
     </main>
   );
 }
